@@ -1,6 +1,6 @@
 LINK: https://github.com/mikademo/cybersecuritybase-project
 
-Installation:
+Installation and running:
 
 mvn clean package
 java -jar target/cybersecuritybase-project-1.0-SNAPSHOT.jar
@@ -34,11 +34,33 @@ How to fix it
 
 Remove the line "http.csrf().disable();" in the method sec.project.config.SecurityConfiguration.configure.
 
--------------------
+FLAW 3:
+
+Description
 
 A3:2017 Sensitive Data Exposure
 
-laita hetu kantaan
+The application saves the social security number in the plain text format.
+
+How to fix it
+
+In the method sec.project.controller.SignupController.submitForm use the commands:
+
+TextEncryptor encryptor = Encryptors.delux("kddskRdls!klslsk", "5c0744940b5c369b");
+ssn = encryptor.encrypt(ssn);
+
+to encrypt the social security number.
+
+
+
+
+
+
+-------------------
+
+
 
 --------
+
+Mooc: Skannaa onko joku kirjasto haavoittunut? Delete injektio tallennukseen. XSS tallennus ja uusi haku. Hetun yms. tallennus ja paljastus. Csrf XSS:ää? -> helppo tehdä
 
