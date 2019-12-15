@@ -10,7 +10,7 @@ The accounts and passwords are:
 -one/yksi
 -two/kaksi
 
-FLAW 1:
+FLAW 1: TODO tallenna kantaan
 
 Description
 
