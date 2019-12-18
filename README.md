@@ -76,7 +76,12 @@ to encrypt the social security number with the Spring security's classes.
 
 
 -------------------
+Pääsetkö katsomaan kannan sisältöä? Voi olla hyvä hetu salauksessa ja injektiossa.
 
+Delete injektio tallennukseen
+
+XSS tallennus ja uusi haku (ei tämäkään ole vaikea)
+tai helpompi voisiko formin lähetyksen jälkeen olla GOOD BYE ja nimi (XSS:n kanssa)
 
 
 --------
