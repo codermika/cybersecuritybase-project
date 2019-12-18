@@ -26,6 +26,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.formLogin()
         	.permitAll();
         
+        // A2:2017 Broken Authentication
+        http.sessionManagement().enableSessionUrlRewriting(true);
+        
+        // A6:2017 Security Misconfiguration
         http.csrf().disable();
     }
 
@@ -35,11 +39,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
-    	// A2:2017 Broken Authentication
-    	
-    	return new MyPasswordEncoder();
-    	
-        //return new BCryptPasswordEncoder();
+    public PasswordEncoder passwordEncoder() {    	
+        return new BCryptPasswordEncoder();
     }
 }
