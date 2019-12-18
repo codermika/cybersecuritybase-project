@@ -6,12 +6,13 @@ mvn clean package
 java -jar target/cybersecuritybase-project-1.0-SNAPSHOT.jar
 
 Open the browser in the URL http://localhost:8080
+
 The accounts and passwords are:
 -one/yksi
 -two/kaksi
 
 
-FLAW 1: TODO tallenna kantaan
+FLAW 1:
 
 Description
 
@@ -19,7 +20,8 @@ A2:2017 Broken Authentication
 
 The application exposes the session ID in the URL.
 
-The application writes the jsessionid in the URL with the Firefox browser (not with the Chrome browser).
+The application writes the jsessionid in the URL with the Firefox browser (version 70.0.1, Ubuntu 18.04.3 LTS) (not with the Chrome browser version 72.0.3626.121).
+
 When the user opens the new browser and enters the URL http://localhost:8080 the browser
 goes to the URL where the session ID is exposed, like this:
 
@@ -66,7 +68,7 @@ In the method sec.project.controller.SignupController.submitForm use the command
 TextEncryptor encryptor = Encryptors.delux("kddskRdls!klslsk", "5c0744940b5c369b");
 ssn = encryptor.encrypt(ssn);
 
-to encrypt the social security number.
+to encrypt the social security number with the Spring security's classes.
 
 
 
