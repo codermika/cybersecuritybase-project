@@ -77,8 +77,25 @@ Description
 
 A7:2017 Cross-Site Scripting (XSS)
 
+When user input as the name the value
+
 <script>alert("Hello!");</script>
 
+in the last page the Javascript alert is run.
+
+How to fix it
+
+In the template done.html replace the attribute name
+
+th:utext
+
+with the
+
+th:text
+
+attribute name. The th:utext attribute is for the unescaped text and enables the XSS flaw.
+
+  
 
 -------------------
 Pääsetkö katsomaan kannan sisältöä? Voi olla hyvä hetu salauksessa ja injektiossa.
