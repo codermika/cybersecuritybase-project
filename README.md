@@ -77,11 +77,11 @@ Description
 
 A7:2017 Cross-Site Scripting (XSS)
 
-When user input as the name the value
+When the user inputs as the name the value
 
 <script>alert("Hello!");</script>
 
-in the last page the Javascript alert is run.
+in the last page the application runs the Javascript alert.
 
 How to fix it
 
