@@ -71,8 +71,13 @@ ssn = encryptor.encrypt(ssn);
 to encrypt the social security number with the Spring security's classes.
 
 
+FLAW 4:
 
+Description
 
+A7:2017 Cross-Site Scripting (XSS)
+
+<script>alert("Hello!");</script>
 
 
 -------------------
@@ -84,7 +89,27 @@ XSS tallennus ja uusi haku (ei tämäkään ole vaikea)
 tai helpompi voisiko formin lähetyksen jälkeen olla GOOD BYE ja nimi (XSS:n kanssa)
 
 
+-----
+
+Jos tarvitsee tekstiä, niin esittele näytöt.
+
 --------
 
 Mooc: Skannaa onko joku kirjasto haavoittunut? Delete injektio tallennukseen. XSS tallennus ja uusi haku. Hetun yms. tallennus ja paljastus. Csrf XSS:ää? -> helppo tehdä
 
+---
+
+Windows:issa session id tulee url:iin molemmilla selaimilla
+
+Käyttöjärjestelmä             Microsoft Windows 10 Pro
+Versio    10.0.18362 Koontikäännös 18362
+
+Firefox
+71.0 (64-bittinen)
+
+Google Chrome is up to date
+Version 79.0.3945.88 (Official Build) (32-bit)
+
+---
+        // http.headers().xssProtection().disable();
+        http.headers().disable();
