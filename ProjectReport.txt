@@ -95,11 +95,11 @@ contain automatically the hidden input field _csrf like this:
 
 <input type="hidden" name="_csrf" value="a28a4b3d-b1cc-450e-9bef-6bde213d5cc6" />
 
-when the form in posted the hidden field
+When the user sends the form data to the server the  hidden field
 
 _csrf: a28a4b3d-b1cc-450e-9bef-6bde213d5cc6
 
-is posted also to the server with the other form parameters.
+is also posted and the server knows that the request comes from the form which originally loaded the csrf value (so the request doesn't come from the hostile page.
 
 
 FLAW 3:
@@ -108,7 +108,7 @@ Description
 
 A3:2017 Sensitive Data Exposure
 
-The application saves the social security number in the plain text format.
+The application saves the social security number in the plain text format. If the attacker steals the database the sensitive social security numbers are leaked out.
 
 How to fix it
 
@@ -117,7 +117,13 @@ In the method sec.project.controller.SignupController.submitForm use the command
 TextEncryptor encryptor = Encryptors.delux("kddskRdls!klslsk", "5c0744940b5c369b");
 ssn = encryptor.encrypt(ssn);
 
-to encrypt the social security number with the Spring security's classes.
+to encrypt the social security number with the Spring security's classes. 
+
+When
+
+
+
+39764cd65f50da0100a9983e1524e3b7766f902fd4010c8e9fee6e3b993f644f48098a30
 
 
 FLAW 4:

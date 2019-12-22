@@ -11,10 +11,10 @@ public class SignupControllerTest {
 	@Test
 	public void testCrypto() {
 		TextEncryptor encryptor = Encryptors.delux("kddskRdls!klslsk", "5c0744940b5c369b");
-		String encrypted = encryptor.encrypt("Mika");
+		String encrypted = encryptor.encrypt("123456-1234");
 		System.out.println("Encrypted text:" + encrypted);
-		assertNotEquals("Mika", encrypted);
-		assertEquals("Mika", encryptor.decrypt(encrypted));
+		assertNotEquals("123456-1234", encrypted);
+		assertEquals("123456-1234", encryptor.decrypt(encrypted));
 	}
 
 }
