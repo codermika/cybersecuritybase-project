@@ -119,11 +119,17 @@ ssn = encryptor.encrypt(ssn);
 
 to encrypt the social security number with the Spring security's classes. 
 
-When
+For example when the commands
 
+TextEncryptor encryptor = Encryptors.delux("kddskRdls!klslsk", "5c0744940b5c369b");
+String encrypted = encryptor.encrypt("123456-1234");
+System.out.println("Encrypted text:" + encrypted);
 
+are run in the class SignupControllerTest.java the output:
 
-39764cd65f50da0100a9983e1524e3b7766f902fd4010c8e9fee6e3b993f644f48098a30
+Encrypted text:1a9fe27223482aff5592dbb8baa0e78518f4ec165a581c53adf2b1c86c531917ba8e0284347be8f4ccbaab
+
+is produced.
 
 
 FLAW 4:
@@ -132,7 +138,7 @@ Description
 
 A7:2017 Cross-Site Scripting (XSS)
 
-When the user inputs as the name the value
+When the user inputs in the page "Sign up to the event using this form" as the name the value
 
 <script>alert("Hello!");</script>
 
