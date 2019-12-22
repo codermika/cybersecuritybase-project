@@ -53,17 +53,17 @@ http://localhost:8080/login;jsessionid=A00E5471120F09D9FA3FA69D5EE3A50D
 
 Note 1:
 
-The flaw only shows in the beginning when the browser is opened (at least with the Ubuntu 18.04.3 LTS + Firefox 70.0.1 combination).
+The flaw only shows in the beginning when the browser is opened and the URL is entered (at least with the Ubuntu 18.04.3 LTS + Firefox 70.0.1 combination).
 
 Note 2: 
 
-The flaw has reproduced with the following operating system and browser combinations:
+The flaw has been reproduced with the following operating system and browser combinations:
 
 Ubuntu 18.04.3 LTS + Firefox 70.0.1
 Microsoft Windows 10 Pro 10.0.18362 + Firefox 71.0 (64-bittinen)
 Microsoft Windows 10 Pro 10.0.18362 + Chrome 79.0.3945.88 (Official Build) (32-bit)
 
-The flaw has NOT reproduced with the following operating system browser combination:
+The flaw has NOT been reproduced with the following operating system browser combination:
 
 Ubuntu 18.04.3 LTS + Chrome  72.0.3626.121
 
@@ -214,7 +214,7 @@ After the command
 
 mvn dependency-check:check
 
-run there are only one vulnerability:
+run there is only one vulnerability:
 
 One or more dependencies were identified with known vulnerabilities in cybersecuritybase-project:
 
