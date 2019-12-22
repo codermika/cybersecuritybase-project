@@ -51,7 +51,11 @@ the browser goes to the URL where the session ID is exposed, like this:
 
 http://localhost:8080/login;jsessionid=A00E5471120F09D9FA3FA69D5EE3A50D
 
-Note: 
+Note 1:
+
+The flaw only shows in the beginning when the browser is opened (at least with the Ubuntu 18.04.3 LTS + Firefox 70.0.1 combination).
+
+Note 2: 
 
 The flaw has reproduced with the following operating system and browser combinations:
 
@@ -99,7 +103,7 @@ When the user sends the form data to the server the  hidden field
 
 _csrf: a28a4b3d-b1cc-450e-9bef-6bde213d5cc6
 
-is also posted and the server knows that the request comes from the form which originally loaded the csrf value (so the request doesn't come from the hostile page.
+is also posted and the server knows that the request comes from the form which originally loaded the csrf value (so the request doesn't come from the hostile page).
 
 
 FLAW 3:
@@ -144,7 +148,7 @@ When the user inputs in the page "Sign up to the event using this form" as the n
 
 <script>alert("Hello!");</script>
 
-in the last page the application runs the Javascript alert.
+and submits the page after that in the last page the application runs the Javascript alert.
 
 How to fix it
 
@@ -160,7 +164,7 @@ attribute name. The th:utext attribute is for the unescaped text and enables the
 
 th:text
 
-attribute is used the script is escaped like this (see the source code in the browser):
+attribute is used the script is escaped like this (see the source code in the browser after the fix):
 
 <span>&lt;script&gt;alert(&quot;Hello!&quot;);&lt;/script&gt;</span>
 
