@@ -138,6 +138,8 @@ Description
 
 A7:2017 Cross-Site Scripting (XSS)
 
+The application contains the Reflected XSS vulnerability. The application renders the done.html template without escaping the name parameter.
+
 When the user inputs in the page "Sign up to the event using this form" as the name the value
 
 <script>alert("Hello!");</script>
@@ -154,7 +156,15 @@ with the
 
 th:text
 
-attribute name. The th:utext attribute is for the unescaped text and enables the XSS flaw.
+attribute name. The th:utext attribute is for the unescaped text and enables the XSS flaw. When the
+
+th:text
+
+attribute is used the script is escaped like this (see the source code in the browser):
+
+<span>&lt;script&gt;alert(&quot;Hello!&quot;);&lt;/script&gt;</span>
+
+So the script is not executed, because for the browser it is not anymore the Javascript code.
 
   
 FLAW 5:
