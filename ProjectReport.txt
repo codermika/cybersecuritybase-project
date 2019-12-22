@@ -7,9 +7,32 @@ java -jar target/cybersecuritybase-project-1.0-SNAPSHOT.jar
 
 Open the browser in the URL http://localhost:8080
 
-The accounts and passwords are:
+The browser redirects to the URL like this:
+
+http://localhost:8080/login;jsessionid=A00E5471120F09D9FA3FA69D5EE3A50D
+
+and the page "Login with Username and Password" opens
+
+The possible user and password combinations are:
 -one/yksi
 -two/kaksi
+
+After successful login the application goes to the URL:
+
+http://localhost:8080/form
+
+and the page "Sign up to the event using this form" opens.
+
+Give for example the following values:
+
+Name: aaa
+Address: bbb
+Social security number: ccc
+
+and press the "Submit" button. After that the application opens the final page like this:
+
+Done!
+Thank you aaa! You have been signed up to the event!
 
 
 FLAW 1:
@@ -46,7 +69,9 @@ Remove the line
 
 http.sessionManagement().enableSessionUrlRewriting(true);
 
-in the method sec.project.config.SecurityConfiguration.configure. After the fix the jsessionid parameter is not exposed in the URL.
+in the method sec.project.config.SecurityConfiguration.configure. After the fix the jsessionid parameter is not exposed in the URL:
+
+http://localhost:8080/login
 
 
 FLAW 2:
