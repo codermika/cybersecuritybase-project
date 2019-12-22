@@ -18,14 +18,27 @@ Description
 
 A2:2017 Broken Authentication
 
-The application exposes the session ID in the URL.
+The application exposes the session ID (jsessionid) in the URL.
 
-The application writes the jsessionid in the URL with the Firefox browser (version 70.0.1, Ubuntu 18.04.3 LTS) (not with the Chrome browser version 72.0.3626.121).
+When the user opens the new browser (and other browser windows are not open) and enters the URL 
 
-When the user opens the new browser and enters the URL http://localhost:8080 the browser
-goes to the URL where the session ID is exposed, like this:
+http://localhost:8080 
+
+the browser goes to the URL where the session ID is exposed, like this:
 
 http://localhost:8080/login;jsessionid=A00E5471120F09D9FA3FA69D5EE3A50D
+
+Note: 
+
+The flaw has reproduced with the following operating system and browser combinations:
+
+Ubuntu 18.04.3 LTS + Firefox 70.0.1
+Microsoft Windows 10 Pro 10.0.18362 + Firefox 71.0 (64-bittinen)
+Microsoft Windows 10 Pro 10.0.18362 + Chrome 79.0.3945.88 (Official Build) (32-bit)
+
+The flaw has NOT reproduced with the following operating system browser combination:
+
+Ubuntu 18.04.3 LTS + Chrome  72.0.3626.121
 
 How to fix it
 
@@ -33,7 +46,7 @@ Remove the line
 
 http.sessionManagement().enableSessionUrlRewriting(true);
 
-in the method sec.project.config.SecurityConfiguration.configure.
+in the method sec.project.config.SecurityConfiguration.configure. After the fix the jsessionid parameter is not exposed in the URL.
 
 
 FLAW 2:
@@ -51,6 +64,17 @@ Remove the line
 http.csrf().disable();
 
 in the method sec.project.config.SecurityConfiguration.configure.
+
+After the fix the forms (http://localhost:8080/login and http://localhost:8080/form) which the application returns
+contain automatically the hidden input field _csrf like this:
+
+<input type="hidden" name="_csrf" value="a28a4b3d-b1cc-450e-9bef-6bde213d5cc6" />
+
+when the form in posted the hidden field
+
+_csrf: a28a4b3d-b1cc-450e-9bef-6bde213d5cc6
+
+is posted also to the server with the other form parameters.
 
 
 FLAW 3:

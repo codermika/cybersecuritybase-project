@@ -1,0 +1,6 @@
+One or more dependencies were identified with known vulnerabilities in cybersecuritybase-project:
+
+spring-security-core-5.2.1.RELEASE.jar (pkg:maven/org.springframework.security/spring-security-core@5.2.1.RELEASE, cpe:2.3:a:pivotal_software:spring_security:5.2.1.release:*:*:*:*:*:*:*) : CVE-2018-1258
+
+
+See the dependency-check report for more details.
